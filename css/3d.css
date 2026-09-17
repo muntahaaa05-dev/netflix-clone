@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Netflix 3D Animations & Physics Parallax Styles
+   ========================================================================== */
+
+/* 3D Perspective Context */
+.row-slider-container,
+.mylist-grid {
+  perspective: 1200px;
+}
+
+.movie-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.3, 1), box-shadow 0.22s ease;
+}
+
+/* 3D Specular Glare Sheen */
+.card-3d-glare {
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  mix-blend-mode: screen;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.movie-card:hover .card-3d-glare {
+  opacity: 1;
+}
+
+/* 3D Card Depth Layers */
+.movie-card:hover .card-badge-top {
+  transform: translateZ(24px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+  transition: transform 0.25s ease;
+}
+
+.movie-card-preview {
+  transform-style: preserve-3d;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.8),
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    0 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.movie-card:hover .preview-actions {
+  transform: translateZ(18px);
+}
+
+.movie-card:hover .preview-title {
+  transform: translateZ(14px);
+}
+
+.movie-card:hover .preview-metadata {
+  transform: translateZ(10px);
+}
+
+/* 3D Hero Billboard Parallax Depth */
+.billboard-content {
+  transform-style: preserve-3d;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.billboard-title {
+  transform: translateZ(28px);
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+}
+
+.billboard-actions {
+  transform: translateZ(20px);
+}
+
+.billboard-top10 {
+  transform: translateZ(16px);
+}
+
+/* 3D Modal Opening Flip Effect */
+.modal-dialog {
+  transform-origin: center top;
+  animation: modal3dOpen 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modal3dOpen {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(14deg) translateY(30px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+/* Interactive 3D Ripple Button */
+.btn-play,
+.btn-more-info,
+.btn-billboard-list,
+.btn-login-submit {
+  position: relative;
+  overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-play:active,
+.btn-more-info:active,
+.btn-billboard-list:active,
+.btn-login-submit:active {
+  transform: scale(0.96) translateZ(-4px);
+}
+
+/* Subtle 3D Ambient Lighting on Hover */
+.movie-card:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 9, 20, 0.2);
+}

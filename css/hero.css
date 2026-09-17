@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Netflix Cinematic Hero Billboard Styles
+   ========================================================================== */
+
+.hero-billboard {
+  position: relative;
+  width: 100%;
+  height: 86vh;
+  min-height: 520px;
+  max-height: 900px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Background image & video */
+.billboard-bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.billboard-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: opacity 0.8s ease;
+}
+
+.billboard-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.billboard-video.playing {
+  opacity: 1;
+}
+
+/* Cinematic Gradient Overlays */
+.billboard-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: 
+    linear-gradient(to right, rgba(20, 20, 20, 0.85) 15%, rgba(20, 20, 20, 0.4) 45%, transparent 75%),
+    linear-gradient(to top, #141414 0%, rgba(20, 20, 20, 0.6) 20%, transparent 60%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, transparent 20%);
+  pointer-events: none;
+}
+
+/* Billboard Content */
+.billboard-content {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 620px;
+  padding: 0 4%;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Netflix Series Badge */
+.billboard-series-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #e5e5e5;
+  text-transform: uppercase;
+}
+
+.billboard-n-logo {
+  font-family: Impact, "Arial Black", sans-serif;
+  color: var(--netflix-red);
+  font-size: 1.4rem;
+  line-height: 1;
+  font-weight: 900;
+}
+
+/* Billboard Title */
+.billboard-title {
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
+  font-weight: 900;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  text-shadow: 2px 2px 14px rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+/* Top 10 Ribbon */
+.billboard-top10 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 2px;
+}
+
+.top10-badge-icon {
+  background: var(--netflix-red);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 2px 6px;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.top10-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Description Synopsis */
+.billboard-overview {
+  font-size: clamp(0.9rem, 1.2vw, 1.15rem);
+  font-weight: 400;
+  line-height: 1.45;
+  color: #ffffff;
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.85);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Action Buttons */
+.billboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.btn-play {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 28px;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  gap: 10px;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-play:hover {
+  background-color: rgba(255, 255, 255, 0.78);
+  transform: scale(1.02);
+}
+
+.btn-more-info,
+.btn-billboard-list {
+  background-color: rgba(109, 109, 110, 0.7);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  gap: 10px;
+  transition: background-color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.btn-more-info:hover,
+.btn-billboard-list:hover {
+  background-color: rgba(109, 109, 110, 0.45);
+  transform: scale(1.02);
+}
+
+.btn-billboard-list.active {
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Right-side audio & age rating controls */
+.billboard-side-controls {
+  position: absolute;
+  right: 0;
+  bottom: 22%;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.billboard-sound-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.billboard-sound-btn:hover {
+  border-color: #ffffff;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.billboard-maturity-badge {
+  background: rgba(51, 51, 51, 0.65);
+  backdrop-filter: blur(4px);
+  border-left: 3px solid #dcdcdc;
+  padding: 6px 14px 6px 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .hero-billboard {
+    height: 65vh;
+  }
+  .billboard-content {
+    max-width: 100%;
+    margin-top: 80px;
+  }
+  .billboard-overview {
+    -webkit-line-clamp: 2;
+    font-size: 0.875rem;
+  }
+  .btn-play, .btn-more-info {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+  .billboard-side-controls {
+    bottom: 12%;
+  }
+}
